@@ -1,0 +1,9 @@
+STRATOS - TERMS OF USE
+
+Copyright (c) 2026 EFriseer (https://efriseer-games.org). All rights reserved.
+
+1. You may download and use Stratos for free, for your own personal use.
+2. You may not sell it, redistribute it or re-upload it to other sites, or change it and share the result, without written permission from EFriseer. Link to this page instead.
+3. Stratos is provided "as is", without any warranty. It works by running inside Microsoft Flight Simulator, so it may stop working after a sim update, may behave differently on other systems, and may cause crashes. You use it at your own risk, and EFriseer is not liable for any damage or loss.
+4. Loading code into a program can be restricted by that program's own licence. Check the Microsoft Flight Simulator licence agreement and decide for yourself whether you are comfortable using Stratos with it.
+5. Stratos is an independent project. It is not made, endorsed or supported by Microsoft or Asobo Studio.

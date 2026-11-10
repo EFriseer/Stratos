@@ -1,0 +1,697 @@
+{
+ "module": "FlightSimulator2024.exe",
+ "build": "MSFS 2024 (Steam), sky atmosphere via hook; weather is delivered as presets; everything else unmapped \u2014 see docs/MAPPING.md",
+ "hooks": {
+  "sky": {
+   "pattern": "58 08 48 89 70 10 48 89 78 18 4C 89 60 20 55 41 56 41 57 48 8D A8 18 FD FF FF 48 81 EC D0 03 00 00 48 8B 1D ?? ?? ?? ?? 4C 8D 35 ?? ?? ?? ?? 0F 29 70 D8 4C 8B FA 0F 29 78 C8 48 8B F1 44 0F 29 40 B8 44 0F 29 48 A8 44 0F 29 50 98 44 0F 29 58 88 44 0F 29 A0 78 FF FF FF 44 0F 29 A8 68 FF FF FF 48 85 DB 75 3C",
+   "add": -5
+  }
+ },
+ "bindings": {
+  "atmo.rayleigh": {
+   "hook": "sky",
+   "offset": "0xC",
+   "type": "f32",
+   "count": 3,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mie": {
+   "hook": "sky",
+   "offset": "0x1C",
+   "type": "f32",
+   "count": 3,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mieExt": {
+   "hook": "sky",
+   "role": "derive",
+   "offset": "0x28",
+   "follow": "0x1C",
+   "type": "f32",
+   "count": 3,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mieAbs": {
+   "hook": "sky",
+   "role": "absorb",
+   "offset": "0x28",
+   "follow": "0x1C",
+   "type": "f32",
+   "count": 3,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mieAbs.r": {
+   "hook": "sky",
+   "role": "absorb",
+   "offset": "0x28",
+   "follow": "0x1C",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mieAbs.g": {
+   "hook": "sky",
+   "role": "absorb",
+   "offset": "0x2C",
+   "follow": "0x20",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mieAbs.b": {
+   "hook": "sky",
+   "role": "absorb",
+   "offset": "0x30",
+   "follow": "0x24",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.rayleigh.r": {
+   "hook": "sky",
+   "offset": "0xC",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.rayleigh.g": {
+   "hook": "sky",
+   "offset": "0x10",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.rayleigh.b": {
+   "hook": "sky",
+   "offset": "0x14",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mie.r": {
+   "hook": "sky",
+   "offset": "0x1C",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mie.g": {
+   "hook": "sky",
+   "offset": "0x20",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mie.b": {
+   "hook": "sky",
+   "offset": "0x24",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.mieG": {
+   "hook": "sky",
+   "offset": "0x34",
+   "type": "f32",
+   "sanity": [
+    -1.0,
+    1.0
+   ]
+  },
+  "atmo.ozone": {
+   "hook": "sky",
+   "offset": "0x4C",
+   "type": "f32",
+   "count": 3,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "light.sun": {
+   "pattern": "F2 0F 59 05 ?? ?? ?? ?? F2 0F 58 05 ?? ?? ?? ?? 0F 57 F6 F2 0F 5A F0 F3 0F 10 0D ?? ?? ?? ?? 48 8D 4D A0 E8",
+   "add": 8,
+   "rip": [
+    4,
+    8
+   ],
+   "chain": [],
+   "type": "f64",
+   "readonly": true,
+   "sanity": [
+    1000.0,
+    10000000.0
+   ]
+  },
+  "light.exposureBias": {
+   "pattern": "48 81 EC 38 01 00 00 33 D2 89 94 24 20 01 00 00 0F 10 15 ?? ?? ?? ?? 0F 11 54 24 20 0F 10 05 ?? ?? ?? ?? 0F 11 44 24 30 0F 10 0D ?? ?? ?? ?? 0F 11 4C 24 40 F2 0F 10 05 ?? ?? ?? ?? F2 0F 11 44 24 50 8B 05 ?? ?? ?? ?? 89 44 24 58 0F B7 05 ?? ?? ?? ?? 66 89 44 24 5C 48 8D 4C 24 20 88 51 3E 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 48 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? C7 05 ?? ?? ?? ?? 01 00 00 00 48 8D 54 24 20 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 90 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 48 C7 05 ?? ?? ?? ?? 00 00 00 00 C7 05 ?? ?? ?? ?? 00 00 40 C0",
+   "add": 212,
+   "rip": [
+    2,
+    10
+   ],
+   "after": -12,
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    -3.0,
+    3.0
+   ],
+   "count": 2
+  },
+  "wx.aerosol": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    100.0
+   ]
+  },
+  "wx.temperature": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "bias": 273.15,
+   "sanity": [
+    150.0,
+    350.0
+   ]
+  },
+  "wx.pressure": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "scale": 100.0,
+   "sanity": [
+    50000.0,
+    130000.0
+   ]
+  },
+  "wx.c1.base": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    -1,
+    30000
+   ]
+  },
+  "wx.c1.top": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    -1,
+    30000
+   ]
+  },
+  "wx.c1.density": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    10
+   ]
+  },
+  "wx.c1.cover": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    1
+   ]
+  },
+  "wx.c2.base": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    -1,
+    30000
+   ]
+  },
+  "wx.c2.top": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    -1,
+    30000
+   ]
+  },
+  "wx.c2.density": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    10
+   ]
+  },
+  "wx.c2.cover": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    1
+   ]
+  },
+  "wx.c3.base": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    -1,
+    30000
+   ]
+  },
+  "wx.c3.top": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    -1,
+    30000
+   ]
+  },
+  "wx.c3.density": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    10
+   ]
+  },
+  "wx.c3.cover": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    1
+   ]
+  },
+  "wx.precip": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    1000
+   ]
+  },
+  "wx.precipType": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "i32",
+   "sanity": [
+    0,
+    2
+   ]
+  },
+  "wx.thunder": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "wx.snow": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    10.0
+   ]
+  },
+  "wx.windDir": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    360.0
+   ]
+  },
+  "wx.windSpeed": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    300.0
+   ]
+  },
+  "wx.gust": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    300.0
+   ]
+  },
+  "atmo.depth": {
+   "hook": "sky",
+   "offset": "0x4",
+   "type": "f32",
+   "scale": 1.0,
+   "bias": 6360.0,
+   "sanity": [
+    6361.0,
+    6800.0
+   ]
+  },
+  "atmo.rayleighHeight": {
+   "hook": "sky",
+   "offset": "0x8",
+   "type": "f32",
+   "sanity": [
+    -5.0,
+    -0.0001
+   ]
+  },
+  "atmo.particleFalloff": {
+   "hook": "sky",
+   "offset": "0x18",
+   "type": "f32",
+   "sanity": [
+    -5.0,
+    -0.0001
+   ]
+  },
+  "atmo.ozone.r": {
+   "hook": "sky",
+   "offset": "0x4C",
+   "type": "f32",
+   "scale": 0.001,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.ozone.g": {
+   "hook": "sky",
+   "offset": "0x50",
+   "type": "f32",
+   "scale": 0.001,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "atmo.ozone.b": {
+   "hook": "sky",
+   "offset": "0x54",
+   "type": "f32",
+   "scale": 0.001,
+   "sanity": [
+    0.0,
+    1.0
+   ]
+  },
+  "light.sunTemp": {
+   "pattern": "F2 0F 59 05 ?? ?? ?? ?? F2 0F 58 05 ?? ?? ?? ?? 0F 57 F6 F2 0F 5A F0 F3 0F 10 0D ?? ?? ?? ?? 48 8D 4D A0 E8",
+   "add": 23,
+   "rip": [
+    4,
+    8
+   ],
+   "chain": [],
+   "type": "f32",
+   "readonly": true,
+   "sanity": [
+    1000.0,
+    40000.0
+   ]
+  },
+  "atmo.scatterGain": {
+   "hook": "sky",
+   "offset": "0x64",
+   "type": "f32",
+   "sanity": [
+    0.0,
+    100.0
+   ]
+  },
+  "atmo.ground.r": {
+   "hook": "sky",
+   "offset": "0x58",
+   "type": "f32",
+   "scale": 1.0,
+   "sanity": [
+    0.0,
+    10.0
+   ]
+  },
+  "atmo.ground.g": {
+   "hook": "sky",
+   "offset": "0x5C",
+   "type": "f32",
+   "scale": 1.0,
+   "sanity": [
+    0.0,
+    10.0
+   ]
+  },
+  "atmo.ground.b": {
+   "hook": "sky",
+   "offset": "0x60",
+   "type": "f32",
+   "scale": 1.0,
+   "sanity": [
+    0.0,
+    10.0
+   ]
+  },
+  "clouds.cirrusAltitude": {
+   "pattern": "48 81 EC 38 01 00 00 33 D2 89 94 24 20 01 00 00 0F 28 15 ?? ?? ?? ?? 0F 11 54 24 20 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 30 0F 28 0D ?? ?? ?? ?? 0F 11 4C 24 40 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 50 F2 0F 10 05 ?? ?? ?? ?? F2 0F 11 44 24 60 0F B6 05 ?? ?? ?? ?? 88 44 24 68 48 8D 4C 24 20 88 51 49 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 48 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? C7 05 ?? ?? ?? ?? 01 00 00 00 48 8D 54 24 20 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 90 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? C7 05 ?? ?? ?? ?? 00 00 00 00 C7 05 ?? ?? ?? ?? 00 00 C8 42",
+   "add": 212,
+   "rip": [
+    2,
+    10
+   ],
+   "after": -12,
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    100.0,
+    63000.0
+   ],
+   "count": 2
+  },
+  "clouds.cirrusCoverage": {
+   "pattern": "48 81 EC 38 01 00 00 33 D2 89 94 24 20 01 00 00 0F 28 15 ?? ?? ?? ?? 0F 11 54 24 20 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 30 0F 28 0D ?? ?? ?? ?? 0F 11 4C 24 40 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 50 8B 05 ?? ?? ?? ?? 89 44 24 60 48 8D 4C 24 20 88 51 44 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 48 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? C7 05 ?? ?? ?? ?? 01 00 00 00 48 8D 54 24 20 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 90 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 48 C7 05 ?? ?? ?? ?? 00 00 00 00 C7 05 ?? ?? ?? ?? 00 00 00 00",
+   "add": 198,
+   "rip": [
+    2,
+    10
+   ],
+   "after": -12,
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ],
+   "count": 2
+  },
+  "clouds.buoyWind": {
+   "pattern": "48 81 EC 38 01 00 00 33 D2 89 94 24 20 01 00 00 0F 28 15 ?? ?? ?? ?? 0F 11 54 24 20 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 30 0F 28 0D ?? ?? ?? ?? 0F 11 4C 24 40 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 50 F2 0F 10 05 ?? ?? ?? ?? F2 0F 11 44 24 60 0F B6 05 ?? ?? ?? ?? 88 44 24 68 48 8D 4C 24 20 88 51 49 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 48 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? C7 05 ?? ?? ?? ?? 01 00 00 00 48 8D 54 24 20 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 90 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 48 C7 05 ?? ?? ?? ?? 00 00 00 00 C7 05 ?? ?? ?? ?? 00 00 00 00",
+   "add": 213,
+   "rip": [
+    2,
+    10
+   ],
+   "after": -12,
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    1.0
+   ],
+   "count": 2
+  },
+  "clouds.buoyMinSpeed": {
+   "pattern": "48 81 EC 38 01 00 00 33 D2 89 94 24 20 01 00 00 0F 28 15 ?? ?? ?? ?? 0F 11 54 24 20 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 30 0F 28 0D ?? ?? ?? ?? 0F 11 4C 24 40 0F 28 05 ?? ?? ?? ?? 0F 11 44 24 50 8B 05 ?? ?? ?? ?? 89 44 24 60 0F B7 05 ?? ?? ?? ?? 66 89 44 24 64 0F B6 05 ?? ?? ?? ?? 88 44 24 66 48 8D 4C 24 20 88 51 47 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? 48 89 15 ?? ?? ?? ?? 88 15 ?? ?? ?? ?? C7 05 ?? ?? ?? ?? 01 00 00 00 48 8D 54 24 20 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 90 48 8D 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? C7 05 ?? ?? ?? ?? 00 00 00 00 C7 05 ?? ?? ?? ?? 00 00 00 00",
+   "add": 220,
+   "rip": [
+    2,
+    10
+   ],
+   "after": -12,
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0.0,
+    100.0
+   ],
+   "count": 2
+  },
+  "wx.c1.scatter": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    1
+   ]
+  },
+  "wx.c2.scatter": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    1
+   ]
+  },
+  "wx.c3.scatter": {
+   "pattern": "",
+   "rip": [
+    3,
+    7
+   ],
+   "chain": [],
+   "type": "f32",
+   "sanity": [
+    0,
+    1
+   ]
+  }
+ }
+}
