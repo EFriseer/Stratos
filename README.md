@@ -34,13 +34,27 @@ This page itself holds the portable version: `Stratos.exe`, `stratos_core.dll`, 
 
 ## Videos
 
-Clips from earlier builds (marked "Old builds"). Click a picture to open the video.
+Clips from earlier builds (marked "Old builds"). The previews below are shortened; the full videos can be downloaded from the [`videos`](videos) folder.
 
-| | |
-|---|---|
-| [![Overview](images/video-hero.jpg)](videos/hero-web.mp4)<br>**Overview** | [![Live changes](images/video-live-changes.jpg)](videos/feature-live-changes-web.mp4)<br>**Live changes while flying** |
-| [![Weather presets](images/video-weather-presets.jpg)](videos/feature-weather-presets-web.mp4)<br>**Weather presets** | [![Live weather](images/video-live-weather.jpg)](videos/feature-live-weather-web.mp4)<br>**Live weather** |
-| [![Standalone](images/video-standalone.jpg)](videos/feature-standalone-web.mp4)<br>**Standalone app** | |
+**Overview** ([full video](videos/hero-web.mp4))
+
+![Overview](images/video-hero.gif)
+
+**Live changes while flying** ([full video](videos/feature-live-changes-web.mp4))
+
+![Live changes while flying](images/video-feature-live-changes.gif)
+
+**Weather presets** ([full video](videos/feature-weather-presets-web.mp4))
+
+![Weather presets](images/video-feature-weather-presets.gif)
+
+**Live weather** ([full video](videos/feature-live-weather-web.mp4))
+
+![Live weather](images/video-feature-live-weather.gif)
+
+**Standalone app** ([full video](videos/feature-standalone-web.mp4))
+
+![Standalone app](images/video-feature-standalone.gif)
 
 ## Requirements
 
