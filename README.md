@@ -32,19 +32,30 @@ This page itself holds the portable version: `Stratos.exe`, `stratos_core.dll`, 
 ![Atmosphere](images/app-preview-02-atmosphere.png)
 ![AutoLOD](images/app-preview-05-autolod.png)
 
+## Videos
+
+Clips from earlier builds (marked "Old builds"). Click a picture to open the video.
+
+| | |
+|---|---|
+| [![Overview](images/video-hero.jpg)](videos/hero-web.mp4)<br>**Overview** | [![Live changes](images/video-live-changes.jpg)](videos/feature-live-changes-web.mp4)<br>**Live changes while flying** |
+| [![Weather presets](images/video-weather-presets.jpg)](videos/feature-weather-presets-web.mp4)<br>**Weather presets** | [![Live weather](images/video-live-weather.jpg)](videos/feature-live-weather-web.mp4)<br>**Live weather** |
+| [![Standalone](images/video-standalone.jpg)](videos/feature-standalone-web.mp4)<br>**Standalone app** | |
+
 ## Requirements
 
 - Windows 10 or 11, 64-bit
 - Microsoft Flight Simulator 2024 (Steam), DirectX 12
-- HDR off in the sim for the Post Processing layer (the other tabs work either way)
 - If the sim runs as administrator, run Stratos as administrator too
 
-## Quick start (portable)
+## Quick start
 
-1. Download `Stratos_1.0.0_portable.zip` from Releases and extract the whole folder somewhere you can write to, for example `D:\Stratos`. Not Program Files, not the sim's folder.
-2. Run `Stratos.exe`. Windows may show "Windows protected your PC" because the file is not signed with a paid certificate: click "More info", then "Run anyway".
-3. Start the sim, load into a flight, and wait about ten seconds. Stratos connects by itself.
+1. Download `Stratos_1.0.0_x64-setup.zip` from Releases, extract it and run `Stratos_1.0.0_x64-setup.exe`. It installs for your Windows account only (no administrator rights) and adds a Start menu shortcut and an uninstaller.
+2. Windows may show "Windows protected your PC" because the installer is not signed with a paid certificate: click "More info", then "Run anyway".
+3. Start Stratos and the sim in any order, load into a flight and wait about ten seconds. Stratos connects by itself.
 4. Move a slider or pick a preset.
+
+Prefer no installation? Use `Stratos_1.0.0_portable.zip` instead: extract the whole folder somewhere you can write to (not Program Files, not the sim's folder) and run `Stratos.exe`.
 
 Details on every tab are in the [release notes](https://github.com/EFriseer/Stratos/releases/latest).
 
