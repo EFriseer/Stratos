@@ -79,4 +79,4 @@ Stratos has been tested **only on the author's own PC and configuration**. It ma
 
 ## Support
 
-Join the **[Discord](https://discord.gg/uVhwXbFJGJ)** for help, questions and ideas. Bugs can also be reported as an [issue](https://github.com/EFriseer/Stratos/issues). Please attach `stratos-app.log` and `stratos-core.log` (they are in the Stratos folder) and tell me your GPU, driver version and what you were doing.
+Join the **[Discord](https://discord.gg/uVhwXbFJGJ)** for help, questions and ideas. Please attach `stratos-app.log` and `stratos-core.log` (they are in the Stratos folder) and tell me your GPU, driver version and what you were doing.

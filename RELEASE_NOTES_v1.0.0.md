@@ -73,7 +73,7 @@ Units (feet or metres, temperature and so on), the clock, behaviour, screenshots
 - Make sure the sim is on DirectX 12.
 - Run Stratos as administrator if the sim does.
 - After a sim update, Stratos may need an updated `stratos-map.json`. Check this page for a new release.
-- Two logs sit next to Stratos: `stratos-app.log` and `stratos-core.log`. Attach both when you ask for help on the [Discord](https://discord.gg/uVhwXbFJGJ) or [open an issue](https://github.com/EFriseer/Stratos/issues), with your GPU, driver version and what you were doing.
+- Two logs sit next to Stratos: `stratos-app.log` and `stratos-core.log`. Attach both when you ask for help on the [Discord](https://discord.gg/uVhwXbFJGJ) with your GPU, driver version and what you were doing.
 
 ## Also on Flightsim.to
 
