@@ -9,7 +9,7 @@ Made by **EFriseer** - [efriseer-games.org](https://efriseer-games.org)
 
 ## Download
 
-Go to **[Releases](https://github.com/EFriseer/Stratos/releases/latest)** and pick one:
+Stratos is also on **[Flightsim.to](https://flightsim.to/addon/118853/stratos-the-all-in-one-solution)**. Here on GitHub, go to **[Releases](https://github.com/EFriseer/Stratos/releases/latest)** and pick one:
 
 | File | What it is |
 |---|---|
